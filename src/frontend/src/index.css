@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Playfair Display from Google Fonts (display font for headings) */
+/* DM Sans from local woff2 (body/UI font) */
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+
+    /* === MOSTRA LUXURY DARK THEME (OKLCH raw L C H values) === */
+    /* Deep charcoal backgrounds: #0B0C0D → oklch(~0.10 0 0) */
+    --background: 0.1 0 0;
+    --foreground: 0.95 0 0;
+
+    /* Card surfaces: #111213 */
+    --card: 0.13 0 0;
+    --card-foreground: 0.95 0 0;
+
+    /* Popover: slightly elevated #1A1B1C */
+    --popover: 0.16 0 0;
+    --popover-foreground: 0.95 0 0;
+
+    /* Primary (white/off-white text/actions) */
+    --primary: 0.95 0 0;
+    --primary-foreground: 0.08 0 0;
+
+    /* Secondary (mid-tone gray #2A2B2C) */
+    --secondary: 0.2 0 0;
+    --secondary-foreground: 0.8 0 0;
+
+    /* Muted text #9A9A9A */
+    --muted: 0.2 0 0;
+    --muted-foreground: 0.62 0 0;
+
+    /* Accent: Luxury Gold #C6A46B → oklch(~0.73 0.08 75) */
+    --accent: 0.73 0.08 75;
+    --accent-foreground: 0.1 0 0;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Borders: #242526 / #2A2B2C */
+    --border: 0.2 0 0;
+    --input: 0.18 0 0;
+    --ring: 0.73 0.08 75;
+
+    /* Gold accent dedicated token */
+    --gold: 0.73 0.08 75;
+    --gold-dim: 0.6 0.06 75;
+
+    /* Charts */
+    --chart-1: 0.73 0.08 75;
+    --chart-2: 0.6 0 0;
+    --chart-3: 0.4 0 0;
+    --chart-4: 0.8 0.05 75;
+    --chart-5: 0.5 0 0;
+
+    /* Sidebar */
+    --sidebar: 0.12 0 0;
+    --sidebar-foreground: 0.9 0 0;
+    --sidebar-primary: 0.73 0.08 75;
+    --sidebar-primary-foreground: 0.08 0 0;
+    --sidebar-accent: 0.18 0 0;
+    --sidebar-accent-foreground: 0.8 0 0;
+    --sidebar-border: 0.2 0 0;
+    --sidebar-ring: 0.73 0.08 75;
+  }
+
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "DM Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .font-playfair {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+  .font-sans-ui {
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+
+  /* Gold text utility */
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+  .bg-gold {
+    background-color: oklch(var(--gold));
+  }
+  .border-gold {
+    border-color: oklch(var(--gold));
+  }
+  .ring-gold {
+    --tw-ring-color: oklch(var(--gold));
+  }
+
+  /* Surface utilities */
+  .bg-surface-0 {
+    background-color: oklch(0.1 0 0);
+  }
+  .bg-surface-1 {
+    background-color: oklch(0.13 0 0);
+  }
+  .bg-surface-2 {
+    background-color: oklch(0.16 0 0);
+  }
+  .bg-surface-3 {
+    background-color: oklch(0.2 0 0);
+  }
+
+  .text-primary-content {
+    color: oklch(0.95 0 0);
+  }
+  .text-secondary-content {
+    color: oklch(0.62 0 0);
+  }
+  .text-muted-content {
+    color: oklch(0.45 0 0);
+  }
+
+  .border-subtle {
+    border-color: oklch(0.2 0 0);
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.1 0 0);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.25 0 0);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.35 0 0);
+}
